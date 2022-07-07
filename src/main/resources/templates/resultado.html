@@ -7,9 +7,15 @@
 <body>
   <h3 th:text="${titulo}"></h3>
   <ul>
-    <li th:text="'Username: ' + ${usuario.username}"></li>
-    <li th:text="'Password: ' + ${usuario.password}"></li>
-    <li th:text="'Email: ' + ${usuario.email}"></li>
+      <!-- identificador no se asigna por que no esta amarrado al formulario en thymeleaf, por lo que en el
+            envio se pierde, para persistir se puede usar sessionAttributes
+       -->
+      <li th:text="'identificador: ' + ${usuario.identificador}"></li>
+      <li th:text="'Nombre: ' + ${usuario.nombre}"></li>
+      <li th:text="'Apellido: ' + ${usuario.apellido}"></li>
+      <li th:text="'Username: ' + ${usuario.username}"></li>
+      <li th:text="'Password: ' + ${usuario.password}"></li>
+      <li th:text="'Email: ' + ${usuario.email}"></li>
   </ul>
 </body>
 </html>

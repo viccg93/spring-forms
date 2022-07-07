@@ -6,7 +6,26 @@
 </head>
 <body>
   <h3 th:text="${titulo}"></h3>
-  <form th:action="@{/form}" method="post">
+  <!-- aqui debemos indicar la entidad que esta mapeada al formulario mediante object-->
+  <form th:action="@{/form}" th:object="${usuario}" method="post">
+    <div>
+      <label for="nombre">Nombre: </label>
+      <div>
+        <input type="text" th:field="*{nombre}" id="nombre">
+      </div>
+      <div th:if="${#fields.hasErrors('nombre')}"
+           th:errors="*{nombre}">
+      </div>
+    </div>
+    <div>
+      <label for="apellido">Apellido: </label>
+      <div>
+        <input type="text" th:field="*{apellido}" id="apellido">
+      </div>
+      <div th:if="${#fields.hasErrors('apellido')}"
+           th:errors="*{apellido}">
+      </div>
+    </div>
     <div>
       <label for="username">Username: </label>
       <div>
@@ -14,28 +33,33 @@
               se debe usar el nombre definido en el param del mapping o declarando explicitamente con
               ModelAttribute
          -->
-        <input type="text" name="username" id="username" th:value="${usuario.username}">
+        <!-- se amarra el campo de una entidad con el input del form mediante el nombre del campo
+              usando *
+        -->
+        <input type="text"  id="username" th:field="*{username}">
+
       </div>
-      <div th:if="${errores != null && errores.containsKey('username')}"
-            th:text="${errores.get('username')}">
+      <!-- para mostrar los errores usaremos el helper #fields y para mostrar usaremos errors-->
+      <div th:if="${#fields.hasErrors('username')}"
+            th:errors="*{username}">
       </div>
     </div>
     <div>
       <label for="password">Password: </label>
       <div>
-        <input type="password" name="password" id="password">
+        <input type="password" th:field="*{password}" id="password">
       </div>
-      <div th:if="${errores != null && errores.containsKey('password')}"
-           th:text="${errores.get('password')}">
+      <div th:if="${#fields.hasErrors('password')}"
+           th:errors="*{password}">
       </div>
     </div>
     <div>
       <label for="email">Email: </label>
       <div>
-        <input type="email" name="email" id="email" th:value="${usuario.email}">
+        <input type="email" th:field="*{email}" id="email">
       </div>
-      <div th:if="${errores != null && errores.containsKey('email')}"
-           th:text="${errores.get('email')}">
+      <div th:if="${#fields.hasErrors('email')}"
+           th:errors="*{email}">
       </div>
     </div>
     <div>

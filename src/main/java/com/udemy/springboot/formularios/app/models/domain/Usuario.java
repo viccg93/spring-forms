@@ -3,12 +3,51 @@ package com.udemy.springboot.formularios.app.models.domain;
 import javax.validation.constraints.NotEmpty;
 
 public class Usuario {
+    private int identificador;
+    @NotEmpty
+    private String nombre;
+    @NotEmpty
+    private String apellido;
     @NotEmpty
     private String username;
     @NotEmpty
     private String password;
     @NotEmpty
     private String email;
+
+
+    public Usuario() {
+    }
+
+    public Usuario(int identificador, String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.identificador = identificador;
+    }
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
     public String getUsername() {
         return username;
