@@ -1,6 +1,8 @@
 package com.udemy.springboot.formularios.app.models.domain;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class Usuario {
     private int identificador;
@@ -9,10 +11,12 @@ public class Usuario {
     @NotEmpty
     private String apellido;
     @NotEmpty
+    @Size(min = 3, max = 8)
     private String username;
     @NotEmpty
     private String password;
     @NotEmpty
+    @Email
     private String email;
 
 
