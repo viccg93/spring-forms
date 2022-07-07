@@ -10,7 +10,14 @@
     <div>
       <label for="username">Username: </label>
       <div>
-        <input type="text" name="username" id="username">
+        <!-- Se puede llamar a usuario, ya que Thymeleaf inyecta el usuario de forma implicita
+              se debe usar el nombre definido en el param del mapping o declarando explicitamente con
+              ModelAttribute
+         -->
+        <input type="text" name="username" id="username" th:value="${usuario.username}">
+      </div>
+      <div th:if="${errores != null && errores.containsKey('username')}"
+            th:text="${errores.get('username')}">
       </div>
     </div>
     <div>
@@ -18,11 +25,17 @@
       <div>
         <input type="password" name="password" id="password">
       </div>
+      <div th:if="${errores != null && errores.containsKey('password')}"
+           th:text="${errores.get('password')}">
+      </div>
     </div>
     <div>
       <label for="email">Email: </label>
       <div>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email" th:value="${usuario.email}">
+      </div>
+      <div th:if="${errores != null && errores.containsKey('email')}"
+           th:text="${errores.get('email')}">
       </div>
     </div>
     <div>
