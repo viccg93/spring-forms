@@ -1,16 +1,17 @@
 package com.udemy.springboot.formularios.app.models.domain;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import com.udemy.springboot.formularios.app.validations.IdentificadorRegex;
+
+import javax.validation.constraints.*;
 
 public class Usuario {
-    private int identificador;
-    @NotEmpty
+    @IdentificadorRegex
+    private String identificador;
+    //@NotEmpty
     private String nombre;
     @NotEmpty
     private String apellido;
-    @NotEmpty
+    @NotBlank
     @Size(min = 3, max = 8)
     private String username;
     @NotEmpty
@@ -23,17 +24,17 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int identificador, String nombre, String apellido) {
+    public Usuario(String identificador, String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.identificador = identificador;
     }
 
-    public int getIdentificador() {
+    public String getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(int identificador) {
+    public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
 
